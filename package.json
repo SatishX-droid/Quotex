@@ -1,16 +1,13 @@
 {
     "name": "forex-pwa",
     "version": "1.0.0",
-    "description": "A PWA for Forex trading signals",
-    "main": "src/app.js",
+    "description": "A Progressive Web App for Forex Trading Signals",
+    "main": "app.js",
     "scripts": {
         "start": "live-server public"
     },
     "dependencies": {},
-    "devDependencies": {
-        "live-server": "^1.2.1"
-    },
-    "keywords": ["pwa", "forex", "trading"],
+    "devDependencies": {},
     "author": "Your Name",
     "license": "ISC"
 }
