@@ -1,11 +1,1 @@
-self.addEventListener('install', event => {
-    console.log('Service Worker: Installed');
-});
-
-self.addEventListener('activate', event => {
-    console.log('Service Worker: Activated');
-});
-
-self.addEventListener('fetch', event => {
-    console.log('Service Worker: Fetching', event.request.url);
-});
+// Optional, you can leave this empty if you don't want offline capabilities yet
