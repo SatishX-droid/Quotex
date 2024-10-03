@@ -1,4 +1,5 @@
 # Forex PWA
+Quotex trading signals system 
 A Progressive Web App (PWA) for real-time Forex charts with buy/sell signals.
 
 ### To Run:
