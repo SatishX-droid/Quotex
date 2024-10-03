@@ -4,7 +4,7 @@ body {
     padding: 20px;
     background-color: #ffffff;
     color: #000000;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.5s, color 0.5s;
 }
 
 .dark-mode {
@@ -12,12 +12,12 @@ body {
     color: #ffffff;
 }
 
-.container {
-    max-width: 600px;
-    margin: auto;
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.error {
-    color: red;
+main {
     margin-top: 20px;
 }
