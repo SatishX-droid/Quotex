@@ -3,19 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css"> <!-- CSS in public folder -->
+    <link rel="stylesheet" href="src/styles.css"> <!-- Correct path -->
     <link rel="manifest" href="manifest.json">
     <title>Forex Trading Signals</title>
 </head>
 <body>
-    <div id="app">
-        <h1>Forex Trading Signals</h1>
-        <button id="fetch-signals">Fetch Forex Signals</button>
-        <div id="signals"></div>
-        <button id="theme-toggle">Toggle Dark/Light Mode</button>
-    </div>
-    <script src="src/app.js"></script> <!-- Corrected path -->
-    <script src="src/forexAPI.js"></script> <!-- Include if needed -->
-    <script src="src/theme.js"></script> <!-- Include if needed -->
+    <h1>Forex Trading Signals</h1>
+    <button id="toggle-theme">Toggle Dark/Light Mode</button>
+    <div id="signals-container"></div>
+
+    <script src="src/app.js" defer></script>
+    <script src="src/forexAPI.js" defer></script>
+    <script src="src/theme.js" defer></script>
 </body>
 </html>
