@@ -3,19 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="styles.css">
-    <title>Forex Trading Signals</title>
+    <title>Test OANDA API</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Forex Trading Signals</h1>
-        <button id="theme-toggle">Toggle Dark/Light Mode</button>
-        <div id="signals"></div>
-        <div id="error" class="error"></div>
-    </div>
-    <script src="forexAPI.js"></script>
-    <script src="theme.js"></script>
-    <script src="app.js"></script>
+    <h1>Test OANDA API</h1>
+    <button id="fetch-data">Fetch Forex Data</button>
+    <div id="output"></div>
+    <script>
+        const API_KEY = '08c4811ad76f0c4b9c2667f69f2ec8ae-a64b2339f035229d0b400001c6724487';
+        const ACCOUNT_ID = '101-002-29755987-001';
+        const BASE_URL = 'https://api-fxpractice.oanda.com/v3/accounts/';
+
+        document.getElementById('fetch-data').addEventListener('click', async () => {
+            const outputDiv = document.getElementById('output');
+            outputDiv.innerHTML = 'Fetching...';
+
+            try {
+                const response = await fetch(`${BASE_URL}${ACCOUNT_ID}/pricing?instruments=EUR_USD`, {
+                    headers: {
+                        'Authorization': `Bearer ${API_KEY}`
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const data = await response.json();
+                outputDiv.innerHTML = JSON.stringify(data, null, 2);
+            } catch (error) {
+                outputDiv.innerHTML = `Error: ${error.message}`;
+            }
+        });
+    </script>
 </body>
 </html>
