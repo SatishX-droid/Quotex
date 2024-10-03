@@ -1,12 +1,16 @@
 {
-  "name": "forex-pwa",
-  "version": "1.0.0",
-  "description": "PWA for real-time Forex charts with buy/sell signals",
-  "main": "src/app.js",
-  "scripts": {
-    "start": "serve -s public"
-  },
-  "dependencies": {
-    "serve": "^14.0.1"
-  }
+    "name": "forex-pwa",
+    "version": "1.0.0",
+    "description": "A PWA for Forex trading signals",
+    "main": "src/app.js",
+    "scripts": {
+        "start": "live-server public"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "live-server": "^1.2.1"
+    },
+    "keywords": ["pwa", "forex", "trading"],
+    "author": "Your Name",
+    "license": "ISC"
 }
