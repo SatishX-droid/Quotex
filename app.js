@@ -1,5 +1,3 @@
-// src/app.js
-
 // Function to fetch Forex signals
 async function fetchForexSignals() {
     const response = await fetch('https://api-fxpractice.oanda.com/v3/accounts/101-002-29755987-001/orders', {
@@ -24,10 +22,9 @@ async function displaySignals() {
         const container = document.getElementById('signals-container');
         container.innerHTML = ''; // Clear previous signals
 
-        // Assuming signals is an array of objects
         signals.forEach(signal => {
             const signalElement = document.createElement('div');
-            signalElement.innerText = `Order ID: ${signal.id}, Instrument: ${signal.instrument}`; // Adjust according to your signal structure
+            signalElement.innerText = `Order ID: ${signal.id}, Instrument: ${signal.instrument}`; // Adjust accordingly
             container.appendChild(signalElement);
         });
     } catch (error) {
