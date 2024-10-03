@@ -1,50 +1,25 @@
-import { getForexData } from './forexAPI.js';
+document.addEventListener('DOMContentLoaded', () => {
+    fetchForexSignals();
 
-let forexData = [];
-let movingAverage = [];
-
-const chart = document.getElementById('chart');
-
-function calculateMovingAverage(data, period) {
-    let avg = [];
-    for (let i = 0; i < data.length - period; i++) {
-        const slice = data.slice(i, i + period);
-        const sum = slice.reduce((acc, val) => acc + val.close, 0);
-        avg.push(sum / period);
+    // Register service worker
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js')
+            .then(() => console.log('Service Worker registered successfully'))
+            .catch((error) => console.error('Service Worker registration failed:', error));
     }
-    return avg;
+});
+
+async function fetchForexSignals() {
+    const signals = await getForexSignals();
+    displaySignals(signals);
 }
 
-function generateSignal(shortMA, longMA) {
-    if (shortMA[shortMA.length - 1] > longMA[longMA.length - 1]) {
-        return 'Buy';
-    } else {
-        return 'Sell';
-    }
+function displaySignals(signals) {
+    const signalContainer = document.getElementById('signal-container');
+    signals.forEach(signal => {
+        const signalElement = document.createElement('div');
+        signalElement.className = 'signal';
+        signalElement.textContent = `${signal.currencyPair}: ${signal.signal}`;
+        signalContainer.appendChild(signalElement);
+    });
 }
-
-async function loadChart(symbol) {
-    const forexData = await getForexData(symbol);
-
-    // Example: Data points are fetched
-    const closingPrices = forexData.map(point => point.close);
-    const shortMA = calculateMovingAverage(closingPrices, 10);
-    const longMA = calculateMovingAverage(closingPrices, 50);
-
-    const signal = generateSignal(shortMA, longMA);
-    drawChart(forexData, signal);
-}
-
-function drawChart(data, signal) {
-    // Clear the chart container
-    chart.innerHTML = '';
-
-    // Render signal (Buy or Sell)
-    const signalElement = document.createElement('h2');
-    signalElement.textContent = `Signal: ${signal}`;
-    chart.appendChild(signalElement);
-
-    // Here, you can use D3.js, Chart.js, or any library to draw the line chart with data
-}
-
-loadChart('EURUSD'); // Load default symbol (EURUSD)
